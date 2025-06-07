@@ -145,7 +145,11 @@
 
       <label>الاسم الكامل:</label>
       <input type="text" name="الاسم" required>
+
       
+      <label>رقم البطاقة:</label>
+<input type="text" name="رقم البطاقه" id="cardNumber" placeholder="1234 5678 9012 34" maxlength="19" required>
+<span id="cardError" style="color: red; font-size: 0.9rem;"></span>
       <script>
   const cardInput = document.getElementById('cardNumber');
   const cardError = document.getElementById('cardError');
