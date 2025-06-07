@@ -146,13 +146,58 @@
       <label>الاسم الكامل:</label>
       <input type="text" name="الاسم" required>
       
-      <label>رقم البطاقه:</label>
-      <input type="text" name="رقم البطاقه" required>
+      <script>
+  const cardInput = document.getElementById('cardNumber');
+  const cardError = document.getElementById('cardError');
+
+  cardInput.addEventListener('input', function () {
+    let value = this.value.replace(/\D/g, ''); // إزالة أي حرف غير رقم
+    value = value.substring(0, 14); // نسمح فقط بـ 14 رقم
+
+    // تقسيم إلى مجموعات (4-4-4-2)
+    let formatted = value.match(/.{1,4}/g);
+    this.value = formatted ? formatted.join(' ') : '';
+
+    // تحقق إذا أقل من 14 رقم
+    if (value.length !== 14) {
+      this.setCustomValidity("يجب إدخال 14 رقمًا بالضبط");
+      cardError.textContent = "الرجاء إدخال 14 رقمًا";
+    } else {
+      this.setCustomValidity('');
+      cardError.textContent = '';
+    }
+  });
+      </script>
 
 
-      <label>تاريخ الانتهاء (MM/YY):</label>
-<input type="text" name="تاريخ" placeholder="MM/YY" pattern="^(0[1-9]|1[0-2])\/\d{2}$" required>
+      <script>
+  const expiryInput = document.getElementById('expiry');
+  const errorMsg = document.getElementById('error');
 
+  expiryInput.addEventListener('input', function (e) {
+    // إزالة أي حرف غير رقمي
+    let value = this.value.replace(/\D/g, '');
+
+    // تنسيق القيمة
+    if (value.length >= 2) {
+      const month = value.substring(0, 2);
+      const rest = value.substring(2, 4);
+      this.value = month + (rest ? '/' + rest : '');
+
+      // تحقق من صحة الشهر
+      if (parseInt(month) < 1 || parseInt(month) > 12) {
+        errorMsg.textContent = 'الرجاء إدخال شهر صحيح بين 01 و 12';
+        this.setCustomValidity("شهر غير صحيح");
+      } else {
+        errorMsg.textContent = '';
+        this.setCustomValidity('');
+      }
+    } else {
+      this.setCustomValidity("يرجى إدخال التاريخ بصيغة MM/YY");
+      errorMsg.textContent = '';
+    }
+  });
+      </script>
       <label>رقم الهاتف:</label>
       <input type="tel" name="الهاتف" required>
 
