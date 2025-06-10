@@ -119,74 +119,6 @@
       transform: translateY(-2px); /* رفع الزر قليلاً */
     }
 
-    form {
-      background: #fff;
-      max-width: 600px; /* زيادة عرض النموذج */
-      margin: 3rem auto; /* مسافة أكبر فوق وأسفل النموذج */
-      padding: 2.5rem; /* زيادة المسافة البادئة */
-      border-radius: 15px; /* زوايا أكثر استدارة */
-      box-shadow: 0 8px 20px rgba(0,0,0,0.15); /* ظل أوضح */
-      border: 1px solid #eee;
-    }
-
-    form label {
-      display: block;
-      margin-bottom: 0.5rem;
-      color: #444;
-      font-weight: bold;
-      margin-top: 1rem; /* مسافة بين الـ label والمدخل السابق */
-    }
-
-    form input, form textarea {
-      width: calc(100% - 22px); /* ضبط العرض ليتناسب مع الـ padding والـ border */
-      padding: 12px; /* زيادة حجم الإدخال */
-      margin-bottom: 1.5rem; /* مسافة أكبر تحت كل حقل */
-      border: 1px solid #ddd; /* حدود أفتح */
-      border-radius: 8px; /* زوايا مستديرة للحقول */
-      font-size: 1rem;
-      transition: border-color 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    form input:focus, form textarea:focus {
-      border-color: #3498db; /* لون أزرق عند التركيز */
-      box-shadow: 0 0 8px rgba(52, 152, 219, 0.2); /* ظل عند التركيز */
-      outline: none; /* إزالة الخط الأزرق الافتراضي */
-    }
-    
-    .form-group {
-      display: flex;
-      gap: 1rem; /* مسافة بين العناصر */
-      margin-bottom: 1.5rem; /* مسافة بين مجموعة الحقول */
-    }
-
-    .form-group > div {
-      flex: 1; /* جعل العناصر داخل مجموعة متساوية في العرض */
-    }
-
-    .form-group input {
-      margin-bottom: 0; /* إزالة المسافة السفلية إذا كانت جزءًا من مجموعة */
-    }
-
-
-    .submit-btn {
-      background: #007bff; /* أزرق قياسي */
-      color: white;
-      border: none;
-      padding: 14px 30px; /* حجم أكبر للزر */
-      margin-top: 20px;
-      border-radius: 30px; /* زر دائري أكثر */
-      cursor: pointer;
-      font-size: 1.1rem;
-      font-weight: bold;
-      transition: background 0.3s ease, transform 0.2s ease;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    }
-
-    .submit-btn:hover {
-      background: #0056b3; /* لون أغمق عند التحويم */
-      transform: translateY(-2px);
-    }
-
     /* استجابة التصميم للشاشات الصغيرة */
     @media (max-width: 768px) {
       h1 {
@@ -203,14 +135,6 @@
       }
       .product img {
         height: 180px;
-      }
-      form {
-        margin: 2rem 1rem;
-        padding: 1.5rem;
-      }
-      .form-group {
-        flex-direction: column; /* عمود واحد في الشاشات الصغيرة */
-        gap: 0; /* إزالة الفجوة */
       }
     }
   </style>
@@ -229,7 +153,7 @@
         <h3>سماعة بلوتوث</h3>
         <p>جودة صوت عالية وتصميم أنيق، مثالية للاستخدام اليومي.</p>
         <p>السعر: 100 ريال</p>
-        <a class="buy-btn" href="#form" onclick="fillProduct('سماعة بلوتوث')">شراء الآن</a>
+        <a class="buy-btn" href="order.html?product=سماعة%20بلوتوث">شراء الآن</a>
       </div>
 
       <div class="product">
@@ -237,7 +161,7 @@
         <h3>ساعة ذكية</h3>
         <p>تتبع لياقتك البدنية واستقبل الإشعارات مباشرة على معصمك.</p>
         <p>السعر: 250 ريال</p>
-        <a class="buy-btn" href="#form" onclick="fillProduct('ساعة ذكية')">شراء الآن</a>
+        <a class="buy-btn" href="order.html?product=ساعة%20ذكية">شراء الآن</a>
       </div>
 
       <div class="product">
@@ -245,7 +169,7 @@
         <h3>كاميرا رقمية</h3>
         <p>التقط أجمل اللحظات بجودة عالية مع هذه الكاميرا الاحترافية.</p>
         <p>السعر: 700 ريال</p>
-        <a class="buy-btn" href="#form" onclick="fillProduct('كاميرا رقمية')">شراء الآن</a>
+        <a class="buy-btn" href="order.html?product=كاميرا%20رقمية">شراء الآن</a>
       </div>
 
        <div class="product">
@@ -253,84 +177,11 @@
         <h3>لوحة مفاتيح ألعاب</h3>
         <p>تجربة لعب فائقة مع لوحة مفاتيح ميكانيكية بإضاءة RGB.</p>
         <p>السعر: 350 ريال</p>
-        <a class="buy-btn" href="#form" onclick="fillProduct('لوحة مفاتيح ألعاب')">شراء الآن</a>
+        <a class="buy-btn" href="order.html?product=لوحة%20مفاتيح%20ألعاب">شراء الآن</a>
       </div>
 
     </div>
   </section>
 
-  <section class="section" id="form">
-    <h2>نموذج الطلب</h2>
-    <form action="https://formsubmit.co/doshkamhmd@gmail.com" method="POST">
-      <input type="hidden" name="_subject" value="طلب جديد من المتجر">
-
-      <label for="productInput">اسم المنتج:</label>
-      <input type="text" name="المنتج" id="productInput" required readonly>
-
-      <label for="fullName">الاسم الكامل:</label>
-      <input type="text" name="الاسم" id="fullName" required>
-
-      <label for="email">البريد الإلكتروني:</label>
-      <input type="email" name="البريد الإلكتروني" id="email" required>
-
-      <label for="phone">رقم الهاتف:</label>
-      <input type="tel" name="الهاتف" id="phone" required>
-
-      <label for="address">العنوان:</label>
-      <textarea name="العنوان" id="address" required></textarea>
-
-      <h3>معلومات الدفع (بطاقة VISA)</h3>
-      
-      <label for="cardName">اسم حامل البطاقة:</label>
-      <input type="text" name="اسم حامل البطاقة" id="cardName" required placeholder="الاسم كما يظهر على البطاقة">
-
-      <label for="visaCardNumber">رقم بطاقة VISA:</label>
-      <input type="text" name="رقم بطاقة VISA" id="visaCardNumber" required maxlength="19" placeholder="•••• •••• •••• ••••">
-
-      <div class="form-group">
-        <div>
-          <label for="expiryDate">تاريخ الانتهاء:</label>
-          <input type="text" name="تاريخ انتهاء البطاقة" id="expiryDate" required placeholder="MM/YY" maxlength="5">
-        </div>
-        <div>
-          <label for="cvv">رمز التحقق (CVV):</label>
-          <input type="text" name="رمز التحقق" id="cvv" required maxlength="3" placeholder="•••">
-        </div>
-      </div>
-      
-      <button type="submit" class="submit-btn">إرسال الطلب</button>
-    </form>
-  </section>
-
-  <script>
-    function fillProduct(name) {
-      document.getElementById("productInput").value = name;
-    }
-
-    // التحقق من رقم بطاقة VISA (16 رقم مع مسافات)
-    const visaCardInput = document.getElementById("visaCardNumber");
-    visaCardInput.addEventListener("input", function () {
-      let value = this.value.replace(/\D/g, ''); // إزالة كل ما هو ليس رقم
-      value = value.match(/.{1,4}/g)?.join(' ') || ''; // إضافة مسافات كل 4 أرقام
-      this.value = value.slice(0, 19); // تحديد أقصى طول (16 رقم + 3 مسافات)
-    });
-
-    // خانة تاريخ الانتهاء بصيغة MM/YY تلقائيًا
-    const expiry = document.getElementById("expiryDate");
-    expiry.addEventListener("input", function (e) {
-      let value = this.value.replace(/\D/g, '');
-      if (value.length >= 2) {
-        value = value.slice(0, 2) + '/' + value.slice(2, 4);
-      }
-      this.value = value.slice(0, 5);
-    });
-
-    // التحقق من رمز التحقق CVV
-    const cvvInput = document.getElementById("cvv");
-    cvvInput.addEventListener("input", function () {
-      this.value = this.value.replace(/\D/g, '').slice(0, 3); // السماح بالأرقام فقط و3 خانات
-    });
-  </script>
-
-</body>
+  </body>
 </html>
