@@ -3,268 +3,113 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>بحر الإلكترونيات - متجرك لكل ما هو جديد</title>
+  <title>متجر إلكترونيات</title>
   <style>
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       margin: 0;
       padding: 0;
-      /* خلفية متدرجة جميلة */
-      background: linear-gradient(to right top, #e0f2f7, #c1e8f5, #9ad2ed, #6fc0e5, #4ca0db);
+      background-color: #f4f4f4;
       color: #333;
-      line-height: 1.6;
     }
 
     header {
-      background-color: #2c3e50; /* لون داكن عصري */
-      color: #fff;
-      padding: 1.5rem;
+      background-color: #007bff;
+      color: white;
+      padding: 1em 0;
       text-align: center;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      position: relative; /* لإضافة الأنميشن */
-      overflow: hidden; /* لإخفاء أي عناصر تخرج عن نطاقه */
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     }
 
-    h1 {
-      margin: 0;
-      font-size: 2.8rem; /* حجم أكبر */
-      letter-spacing: 1px;
-      font-style: italic; /* خط مائل */
-      text-shadow: 2px 2px 4px rgba(0,0,0,0.3); /* ظل للنص */
-      animation: fadeInDown 1s ease-out; /* أنميشن للعنوان */
+    .container {
+      width: 90%;
+      margin: auto;
+      overflow: hidden;
+      padding: 20px 0;
     }
 
-    @keyframes fadeInDown {
-      from {
-        opacity: 0;
-        transform: translateY(-20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    /* أنميشن بسيط لخلفية الهيدر */
-    header::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: rgba(255,255,255,0.1);
-      transform: skewX(-30deg);
-      animation: slideIn 2s forwards;
-    }
-
-    @keyframes slideIn {
-      from { left: -100%; }
-      to { left: 100%; }
-    }
-
-    .section {
-      padding: 3rem 1rem;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    h2 {
-      color: #2c3e50;
-      text-align: center;
-      margin-bottom: 2.5rem;
-      font-size: 2rem;
-      position: relative;
-      animation: fadeInUp 1s ease-out 0.5s forwards; /* أنميشن للعناوين */
-      opacity: 0; /* يبدأ مخفيا */
-    }
-
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    h2::after {
-      content: '';
-      display: block;
-      width: 60px;
-      height: 4px;
-      background-color: #3498db;
-      margin: 10px auto 0;
-      border-radius: 2px;
-    }
-
-    .products {
+    .products-grid {
       display: grid;
-      /* تعديل هنا: لعرض صفين دائمًا */
-      grid-template-columns: repeat(2, 1fr); /* دائما عمودين */
-      gap: 2rem;
-      justify-content: center;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+      padding: 20px 0;
     }
 
     .product {
-      background: #fff;
-      padding: 1.5rem;
-      border-radius: 12px;
-      box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+      background-color: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
       text-align: center;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      border: 1px solid #eee;
-      animation: scaleIn 0.5s ease-out; /* أنميشن للمنتجات */
-    }
-
-    @keyframes scaleIn {
-      from {
-        opacity: 0;
-        transform: scale(0.9);
-      }
-      to {
-        opacity: 1;
-        transform: scale(1);
-      }
+      transition: transform 0.2s;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
 
     .product:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+      transform: translateY(-5px);
     }
 
     .product img {
       max-width: 100%;
-      height: 200px;
-      object-fit: cover;
-      border-radius: 8px;
-      margin-bottom: 1rem;
-      border: 1px solid #ddd;
+      height: 200px; /* Fixed height for consistency */
+      object-fit: cover; /* Ensures images cover the area without distortion */
+      border-radius: 4px;
+      margin-bottom: 15px;
     }
 
     .product h3 {
-      color: #34495e;
-      font-size: 1.5rem;
-      margin-top: 0.5rem;
-      margin-bottom: 0.75rem;
+      font-size: 1.5em;
+      color: #007bff;
+      margin-bottom: 10px;
     }
 
     .product p {
-      color: #555;
-      font-size: 1.1rem;
-      margin-bottom: 1.5rem;
+      font-size: 1em;
+      line-height: 1.5;
+      margin-bottom: 10px;
+      flex-grow: 1; /* Allows description to take up available space */
+    }
+
+    .product .price {
+      font-size: 1.2em;
+      font-weight: bold;
+      color: #28a745;
+      margin-bottom: 15px;
     }
 
     .buy-btn {
-      margin-top: 15px;
-      background: #28a745;
-      color: white;
-      padding: 12px 25px;
-      border: none;
-      border-radius: 30px;
-      text-decoration: none;
-      cursor: pointer;
       display: inline-block;
+      background-color: #28a745;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 5px;
+      text-decoration: none;
       font-weight: bold;
-      transition: background 0.3s ease, transform 0.2s ease;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      transition: background-color 0.2s;
     }
 
     .buy-btn:hover {
-      background: #218838;
-      transform: translateY(-2px);
-    }
-
-    /* استجابة التصميم للشاشات الصغيرة */
-    @media (max-width: 768px) {
-      h1 {
-        font-size: 2rem;
-      }
-      h2 {
-        font-size: 1.8rem;
-      }
-      .products {
-        grid-template-columns: repeat(2, 1fr); /* يبقى عمودين ولكن قد يصبح أصغر */
-        gap: 1rem; /* تقليل الفجوة على الشاشات الصغيرة */
-      }
-      .product {
-        padding: 0.8rem; /* تقليل البادئة */
-      }
-      .product img {
-        height: 150px; /* تقليل ارتفاع الصورة أكثر */
-      }
-      .product h3 {
-        font-size: 1.2rem;
-      }
-      .product p {
-        font-size: 0.9rem;
-      }
-      .buy-btn {
-        padding: 10px 20px;
-        font-size: 0.9rem;
-      }
-    }
-
-    /* لشاشات أصغر جداً (مثل الهواتف في الوضع العمودي) */
-    @media (max-width: 480px) {
-      .products {
-        grid-template-columns: 1fr; /* عمود واحد فقط لضمان الوضوح */
-        gap: 1rem;
-      }
-      .product img {
-        height: 180px;
-      }
+      background-color: #218838;
     }
   </style>
 </head>
 <body>
 
   <header>
-    <h1>بحر الإلكترونيات</h1>
+    <h1>متجر الإلكترونيات الخاص بك</h1>
   </header>
 
-  <section class="section">
-    <h2>منتجات إلكترونية مميزة</h2>
-    <div class="products">
-      <div class="product">
-        <img src="https://images.unsplash.com/photo-1546435770-a3e4330b6b0d?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="سماعة بلوتوث">
-        <h3>سماعة بلوتوث احترافية</h3>
-        <p>جودة صوت نقية وتصميم مريح، مثالية لعشاق الموسيقى.</p>
-        <p>السعر: $59.99</p>
-        <a class="buy-btn" href="order.html?product=سماعة%20بلوتوث%20احترافية">شراء الآن</a>
-      </div>
-
-      <div class="product">
-        <img src="https://images.unsplash.com/photo-1596796417739-166fb526c836?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="ساعة ذكية">
-        <h3>ساعة ذكية رياضية</h3>
-        <p>تتبع نشاطك، نبضات القلب، واستقبل إشعاراتك بسهولة.</p>
-        <p>السعر: $129.99</p>
-        <a class="buy-btn" href="order.html?product=ساعة%20ذكية%20رياضية">شراء الآن</a>
-      </div>
-
-      <div class="product">
-        <img src="https://images.unsplash.com/photo-1520390138845-fd2d229dd558?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="كاميرا رقمية">
-        <h3>كاميرا رقمية 4K</h3>
-        <p>التقط صورًا وفيديوهات بجودة سينمائية مذهلة.</p>
-        <p>السعر: $499.00</p>
-        <a class="buy-btn" href="order.html?product=كاميرا%20رقمية%204K">شراء الآن</a>
-      </div>
-
-      <div class="product">
-        <img src="https://images.unsplash.com/photo-1587829749509-0d1999908107?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="لوحة مفاتيح ألعاب">
-        <h3>لوحة مفاتيح ألعاب ميكانيكية</h3>
-        <p>استجابة فائقة وإضاءة RGB قابلة للتخصيص لتجربة لعب مثالية.</p>
-        <p>السعر: $89.50</p>
-        <a class="buy-btn" href="order.html?product=لوحة%20مفاتيح%20ألعاب%20ميكانيكية">شراء الآن</a>
-      </div>
+  <section class="container">
+    <h2>منتجاتنا</h2>
+    <div class="products-grid">
 
       <div class="product">
         <img src="https://images.unsplash.com/photo-1542496658-e395295e8656?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="ماوس ألعاب لاسلكي">
         <h3>ماوس ألعاب لاسلكي</h3>
         <p>دقة عالية وتصميم مريح للعب لساعات طويلة.</p>
-        <p>السعر: $45.00</p>
+        <p class="price">السعر: $45.00</p>
         <a class="buy-btn" href="order.html?product=ماوس%20ألعاب%20لاسلكي">شراء الآن</a>
       </div>
 
@@ -272,8 +117,184 @@
         <img src="https://images.unsplash.com/photo-1549429402-3c5885c3453b?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="شاحن سريع USB-C">
         <h3>شاحن سريع USB-C</h3>
         <p>شحن أجهزتك في وقت قياسي بكفاءة وأمان.</p>
-        <p>السعر: $25.99</p>
+        <p class="price">السعر: $25.99</p>
         <a class="buy-btn" href="order.html?product=شاحن%20سريع%20USB-C">شراء الآن</a>
+      </div>
+
+      <div class="product">
+        <img src="https://images.unsplash.com/photo-1593359677372-24357283626e?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="سماعات رأس لاسلكية">
+        <h3>سماعات رأس لاسلكية</h3>
+        <p>صوت غامر وراحة فائقة للاستماع طوال اليوم.</p>
+        <p class="price">السعر: $79.99</p>
+        <a class="buy-btn" href="order.html?product=سماعات%20رأس%20لاسلكية">شراء الآن</a>
+      </div>
+
+      <div class="product">
+        <img src="https://images.unsplash.com/photo-1547039017-d07f30e0e0a5?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="شاشة ألعاب 27 بوصة">
+        <h3>شاشة ألعاب 27 بوصة</h3>
+        <p>معدل تحديث عالٍ ووقت استجابة سريع لتجربة لعب سلسة.</p>
+        <p class="price">السعر: $299.00</p>
+        <a class="buy-btn" href="order.html?product=شاشة%20ألعاب%2027%20بوصة">شراء الآن</a>
+      </div>
+
+      <div class="product">
+        <img src="https://images.unsplash.com/photo-1510125867332-9c3a38a7413d?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="لوحة مفاتيح ميكانيكية">
+        <h3>لوحة مفاتيح ميكانيكية</h3>
+        <p>مفاتيح سريعة الاستجابة ومتانة عالية لعشاق الألعاب.</p>
+        <p class="price">السعر: $89.00</p>
+        <a class="buy-btn" href="order.html?product=لوحة%20مفاتيح%20ميكانيكية">شراء الآن</a>
+      </div>
+
+      <div class="product">
+        <img src="https://images.unsplash.com/photo-1592882896502-d9f7c0a87679?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="كاميرا ويب عالية الدقة">
+        <h3>كاميرا ويب عالية الدقة</h3>
+        <p>جودة صورة ممتازة للمكالمات والتدفق المباشر.</p>
+        <p class="price">السعر: $59.99</p>
+        <a class="buy-btn" href="order.html?product=كاميرا%20ويب%20عالية%20الدقة">شراء الآن</a>
+      </div>
+
+      <div class="product">
+        <img src="https://images.unsplash.com/photo-1560945532-c7262174d812?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="قرص صلب خارجي 1 تيرابايت">
+        <h3>قرص صلب خارجي 1 تيرابايت</h3>
+        <p>مساحة تخزين كبيرة لجميع ملفاتك الهامة.</p>
+        <p class="price">السعر: $65.00</p>
+        <a class="buy-btn" href="order.html?product=قرص%20صلب%20خارجي%201%20تيرابايت">شراء الآن</a>
+      </div>
+
+      <div class="product">
+        <img src="https://images.unsplash.com/photo-1546733230-ae3a7b69c7e0?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="راوتر واي فاي 6">
+        <h3>راوتر واي فاي 6</h3>
+        <p>سرعة إنترنت فائقة وتغطية واسعة لمنزلك.</p>
+        <p class="price">السعر: $120.00</p>
+        <a class="buy-btn" href="order.html?product=راوتر%20واي%20فاي%206">شراء الآن</a>
+      </div>
+
+      <div class="product">
+        <img src="https://images.unsplash.com/photo-1579589998829-43c3d550e586?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="سماعات أذن رياضية">
+        <h3>سماعات أذن رياضية</h3>
+        <p>مقاومة للماء والعرق، مثالية للتمارين الرياضية.</p>
+        <p class="price">السعر: $9.99</p>
+        <a class="buy-btn" href="order.html?product=سماعات%20أذن%20رياضية">شراء الآن</a>
+      </div>
+
+      <div class="product">
+        <img src="https://images.unsplash.com/photo-1601934579309-913077e685f0?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="مكبر صوت بلوتوث محمول">
+        <h3>مكبر صوت بلوتوث محمول</h3>
+        <p>صوت قوي وواضح في أي مكان تذهب إليه.</p>
+        <p class="price">السعر: $4.00</p>
+        <a class="buy-btn" href="order.html?product=مكبر%20صوت%20بلوتوث%20محمول">شراء الآن</a>
+      </div>
+
+      <div class="product">
+        <img src="https://images.unsplash.com/photo-1596541223932-d04b6b6e4e0a?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="ساعة ذكية">
+        <h3>ساعة ذكية</h3>
+        <p>تتبع لياقتك البدنية واستقبل الإشعارات بسهولة.</p>
+        <p class="price">السعر: $150.00</p>
+        <a class="buy-btn" href="order.html?product=ساعة%20ذكية">شراء الآن</a>
+      </div>
+
+      <div class="product">
+        <img src="https://images.unsplash.com/photo-1565985060799-a47683b51f04?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="طابعة ليزر متعددة الوظائف">
+        <h3>طابعة ليزر متعددة الوظائف</h3>
+        <p>طباعة، نسخ، مسح ضوئي بكفاءة عالية للمكتب المنزلي.</p>
+        <p class="price">السعر: $199.00</p>
+        <a class="buy-btn" href="order.html?product=طابعة%20ليزر%20متعددة%20الوظائف">شراء الآن</a>
+      </div>
+
+      <div class="product">
+        <img src="https://images.unsplash.com/photo-1610444391696-6e1150044ed3?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="شاحن متنقل (باور بانك) 20000mAh">
+        <h3>شاحن متنقل (باور بانك) 20000mAh</h3>
+        <p>حافظ على أجهزتك مشحونة أثناء التنقل.</p>
+        <p class="price">السعر: $17.00</p>
+        <a class="buy-btn" href="order.html?product=شاحن%20متنقل%20(باور%20بانك)%2020000mAh">شراء الآن</a>
+      </div>
+
+      <div class="product">
+        <img src="https://images.unsplash.com/photo-1618386121855-385a3a0e1b6f?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="مروحة تبريد للكمبيوتر المحمول">
+        <h3>مروحة تبريد للكمبيوتر المحمول</h3>
+        <p>تحسين أداء جهازك ومنع ارتفاع درجة الحرارة.</p>
+        <p class="price">السعر: $20.00</p>
+        <a class="buy-btn" href="order.html?product=مروحة%20تبريد%20للكمبيوتر%20المحمول">شراء الآن</a>
+      </div>
+
+      <div class="product">
+        <img src="https://images.unsplash.com/photo-1582236940084-21ed67d4fdf8?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="قلم رقمي ذكي">
+        <h3>قلم رقمي ذكي</h3>
+        <p>للرسم والكتابة على الأجهزة اللوحية بسهولة ودقة.</p>
+        <p class="price">السعر: $5.00</p>
+        <a class="buy-btn" href="order.html?product=قلم%20رقمي%20ذكي">شراء الآن</a>
+      </div>
+
+      <div class="product">
+        <img src="https://images.unsplash.com/photo-1543242095-2c8c4a03c391?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="حامل هاتف للسيارة">
+        <h3>حامل هاتف للسيارة</h3>
+        <p>تثبيت آمن لهاتفك أثناء القيادة.</p>
+        <p class="price">السعر: $8.00</p>
+        <a class="buy-btn" href="order.html?product=حامل%20هاتف%20للسيارة">شراء الآن</a>
+      </div>
+
+      <div class="product">
+        <img src="https://images.unsplash.com/photo-1579564619426-5b7c7b8d0a84?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="كابل HDMI عالي السرعة">
+        <h3>كابل HDMI عالي السرعة</h3>
+        <p>لنقل الفيديو والصوت بجودة فائقة.</p>
+        <p class="price">السعر: $2.99</p>
+        <a class="buy-btn" href="order.html?product=كابل%20HDMI%20عالي%20السرعة">شراء الآن</a>
+      </div>
+
+      <div class="product">
+        <img src="https://images.unsplash.com/photo-1596700769493-9c049d5c4b12?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="مفتاح ذكي للإضاءة">
+        <h3>مفتاح ذكي للإضاءة</h3>
+        <p>تحكم في إضاءة منزلك عن بعد.</p>
+        <p class="price">السعر: $30.00</p>
+        <a class="buy-btn" href="order.html?product=مفتاح%20ذكي%20للإضاءة">شراء الآن</a>
+      </div>
+
+      <div class="product">
+        <img src="https://images.unsplash.com/photo-1542393593-3d0d845e282d?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="كاميرا أمنية للمنزل">
+        <h3>كاميرا أمنية للمنزل</h3>
+        <p>مراقبة منزلك بجودة عالية على مدار الساعة.</p>
+        <p class="price">السعر: $15.00</p>
+        <a class="buy-btn" href="order.html?product=كاميرا%20أمنية%20للمنزل">شراء الآن</a>
+      </div>
+
+      <div class="product">
+        <img src="https://images.unsplash.com/photo-1549429402-3c5885c3453b?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="محول USB-C متعدد المنافذ">
+        <h3>محول USB-C متعدد المنافذ</h3>
+        <p>توصيل أجهزة متعددة بجهازك عبر منفذ واحد.</p>
+        <p class="price">السعر: $00.50</p>
+        <a class="buy-btn" href="order.html?product=محول%20USB-C%20متعدد%20المنافذ">شراء الآن</a>
+      </div>
+
+      <div class="product">
+        <img src="https://images.unsplash.com/photo-1546733230-ae3a7b69c7e0?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="ميكروفون ستوديو USB">
+        <h3>ميكروفون ستوديو USB</h3>
+        <p>جودة صوت احترافية للتسجيل والبودكاست.</p>
+        <p class="price">السعر: $7.00</p>
+        <a class="buy-btn" href="order.html?product=ميكروفون%20ستوديو%20USB">شراء الآن</a>
+      </div>
+
+      <div class="product">
+        <img src="https://images.unsplash.com/photo-1549429402-3c5885c3453b?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="جهاز تحكم ألعاب بلوتوث">
+        <h3>جهاز تحكم ألعاب بلوتوث</h3>
+        <p>تجربة لعب مريحة على هاتفك الذكي أو جهازك اللوحي.</p>
+        <p class="price">السعر: $3.00</p>
+        <a class="buy-btn" href="order.html?product=جهاز%20تحكم%20ألعاب%20بلوتوث">شراء الآن</a>
+      </div>
+
+      <div class="product">
+        <img src="https://images.unsplash.com/photo-1542496658-e395295e8656?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="نظام شبكة منزلية Mesh Wi-Fi">
+        <h3>نظام شبكة منزلية Mesh Wi-Fi</h3>
+        <p>تغطية Wi-Fi قوية ومستقرة في كل ركن من أركان منزلك.</p>
+        <p class="price">السعر: $178.00</p>
+        <a class="buy-btn" href="order.html?product=نظام%20شبكة%20منزلية%20Mesh%20Wi-Fi">شراء الآن</a>
+      </div>
+
+      <div class="product">
+        <img src="https://images.unsplash.com/photo-1549429402-3c5885c3453b?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="حزمة بطاريات AAA قابلة لإعادة الشحن">
+        <h3>حزمة بطاريات AAA قابلة لإعادة الشحن</h3>
+        <p>حل صديق للبيئة واقتصادي لأجهزتك.</p>
+        <p class="price">السعر: $1.20</p>
+        <a class="buy-btn" href="order.html?product=حزمة%20بطاريات%20AAA%20قابلة%20لإعادة%20الشحن">شراء الآن</a>
       </div>
 
     </div>
